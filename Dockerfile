@@ -34,7 +34,9 @@ ENV HOME /root
 ENV PYENV_ROOT $HOME/.pyenv
 ENV PATH $PYENV_ROOT/bin:$PATH
 RUN git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
-RUN echo 'eval "$(pyenv init -)"' >> $HOME/.bashrc && \
+RUN echo 'export PYENV_ROOT=$HOME/.pyenv' >> $HOME/.bashrc && \
+    echo 'export PATH=$PYENV_ROOT/bin:$PATH' >> $HOME/.bashrc && \
+    echo 'eval "$(pyenv init -)"' >> $HOME/.bashrc && \
     eval "$(pyenv init -)"
 
 ENV PYENV_ROOT $HOME/.pyenv
