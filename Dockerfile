@@ -46,9 +46,15 @@ RUN echo '## CUDA and cuDNN paths' >> $HOME/.bash_profile && \
 ENV PYENV_ROOT $HOME/.pyenv
 ENV PATH $PATH:$HOME/.pyenv/shims:$HOME/.pyenv/bin
 RUN chmod 777 $HOME/.pyenv -R
-ARG python_version="3.6.5"
+ARG python_version="anaconda3-5.0.0"
 RUN pyenv install ${python_version}
 RUN pyenv global ${python_version}
+RUN conda update -n base conda -y
+RUN conda update --all -y
+RUN conda install mkl
+RUN pip install tensorflow-gpu==1.12.0
+RUN pip install keras==2.2.4
+RUN conda install -c conda-forge opencv
 
 RUN mkdir /root/workspace
 
