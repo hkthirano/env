@@ -53,7 +53,6 @@ RUN chmod 777 $HOME/.pyenv -R
 ARG python_version="anaconda3-5.0.0"
 RUN pyenv install ${python_version}
 RUN pyenv global ${python_version}
-RUN conda update --all -y
 RUN conda install mkl
 RUN pip install tensorflow-gpu==1.12.0
 RUN pip install keras==2.2.4
