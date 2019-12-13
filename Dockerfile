@@ -1,7 +1,7 @@
 # docker build ./ -t hirano_v1
 # docker run --gpus all -it --privileged --name hirano_v1 hirano_v1 /bin/bash
 
-FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer="Admin <admin@admin.com>"
 
@@ -9,7 +9,7 @@ CMD echo "now running..."
 
 RUN apt-get update -y
 RUN apt-get install -y vim git curl wget tmux openssh-server sudo cifs-utils
-RUN apt-get install -y net-tools
+RUN apt-get install -y net-tools zlib1g-dev libssl-dev
 
 # ssh
 RUN mkdir /var/run/sshd
