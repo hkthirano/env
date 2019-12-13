@@ -1,7 +1,7 @@
 # docker build ./ -t hirano_v1
 # docker run --gpus all -it --privileged --name hirano_v1 hirano_v1 /bin/bash
 
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu18.04
 
 LABEL maintainer="Admin <admin@admin.com>"
 
@@ -39,18 +39,18 @@ RUN echo 'export PYENV_ROOT=$HOME/.pyenv' >> $HOME/.bashrc && \
     echo 'eval "$(pyenv init -)"' >> $HOME/.bashrc && \
     eval "$(pyenv init -)"
 
+RUN echo '## CUDA and cuDNN paths' >> $HOME/.bash_profile && \
+    echo 'export PATH=/usr/local/cuda-9.0/bin:${PATH}' >> $HOME/.bash_profile && \
+    echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}' >> $HOME/.bash_profile
+
 ENV PYENV_ROOT $HOME/.pyenv
 ENV PATH $PATH:$HOME/.pyenv/shims:$HOME/.pyenv/bin
 RUN chmod 777 $HOME/.pyenv -R
-ARG python_version="anaconda3-5.1.0"
+ARG python_version="3.6.5"
 RUN pyenv install ${python_version}
 RUN pyenv global ${python_version}
-RUN conda update -n base conda -y
-RUN conda update --all -y
-RUN conda install mkl
-RUN pip install tensorflow-gpu==1.13.1
-RUN pip install keras
-RUN conda install -c conda-forge opencv
+
+RUN mkdir /root/workspace
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
