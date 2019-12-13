@@ -43,6 +43,11 @@ RUN echo '## CUDA and cuDNN paths' >> $HOME/.bash_profile && \
     echo 'export PATH=/usr/local/cuda-9.0/bin:${PATH}' >> $HOME/.bash_profile && \
     echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}' >> $HOME/.bash_profile
 
+RUN apt update && apt upgrade -y
+RUN apt install language-pack-ja-base language-pack-ja ibus-mozc
+RUN echo 'export LANG=ja_JP.UTF-8' >> ~/.bash_profile
+RUN echo 'export LANGUAGE="ja_JP:ja"' >> ~/.bash_profile
+
 ENV PYENV_ROOT $HOME/.pyenv
 ENV PATH $PATH:$HOME/.pyenv/shims:$HOME/.pyenv/bin
 RUN chmod 777 $HOME/.pyenv -R
