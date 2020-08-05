@@ -7,3 +7,15 @@
 - ubuntu
   - [Linux OS ubuntu のlocale 設定](https://qiita.com/valzer0/items/d7166a27c156b0699655)
   - [Gitの補完やら、ブランチ名表示やらをbashでしようとしたらエラーが出る](https://qiita.com/gekkoukisi/items/22cc855700a19a2f2c20)
+
+- pyenv
+  ```sh
+  git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+  
+  vim ~/.bash_profile
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+
+  source ~/.bash_profile
+  ```
