@@ -6,5 +6,4 @@
 
 - ubuntu
   - [Linux OS ubuntu のlocale 設定](https://qiita.com/valzer0/items/d7166a27c156b0699655)
-  - [Ubuntu bashのプロンプトHack!!!!（gitブランチ表示）](https://qiita.com/ryosukue/items/bc1eae639e3950790eb9)
   - [Gitの補完やら、ブランチ名表示やらをbashでしようとしたらエラーが出る](https://qiita.com/gekkoukisi/items/22cc855700a19a2f2c20)

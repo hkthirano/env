@@ -109,12 +109,8 @@ export LANGUAGE="ja_JP:ja"
 
 
 # display git branch
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /user/local/etc/bash_completion
-fi
-if [ -f /usr/local/etc/bash_completion.d/git-prompt ]; then
-    export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
-else
-    export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
-fi
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
