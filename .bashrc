@@ -97,7 +97,24 @@ fi
 #if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 #    . /etc/bash_completion
 #fi
+
+# === my settings ===
+
 export PATH=/usr/local/cuda/bin:${PATH}
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+
+
 export LANG=ja_JP.UTF-8
 export LANGUAGE="ja_JP:ja"
+
+
+# display git branch
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /user/local/etc/bash_completion
+fi
+if [ -f /usr/local/etc/bash_completion.d/git-prompt ]; then
+    export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
+else
+    export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
+fi
+
